@@ -102,3 +102,70 @@ class MovingAverage:
         return self.current_total/len(self.window)
     
 
+
+"""
+========================
+Day 1 Review — MovingAverage
+========================
+
+Overall Grade: A-
+
+This is clean, efficient, and very close to production-ready for the scope.
+
+------------------------
+What You Did Well
+------------------------
+
+1. Correct complexity:
+   - add(): O(1)
+   - value(): O(1)
+   - bounded memory via deque
+
+2. Minimal authoritative state:
+   - window_size (config)
+   - current_total (aggregate)
+   - window (data)
+   No redundant "size" field — you used len(window) correctly.
+
+3. Correct edge-case handling:
+   - ValueError on empty window is a clean contract.
+
+4. Type hints + float initialization are correct.
+
+------------------------
+Minor Improvements (Polish)
+------------------------
+
+1. Docstrings:
+   Replace "returns blahh" with real descriptions (or remove).
+
+2. __repr__ (optional stretch):
+   Helpful for debugging in production.
+
+3. Input validation (optional):
+   Decide whether to accept ints, reject NaN/inf, etc.
+   (In real quant pipelines you often guard against NaN.)
+
+4. Micro-cleanup:
+   In the full-window branch you can do:
+      old = popleft(); subtract old; append new; add new
+   (what you have is already clear and fine).
+
+------------------------
+Complexity Assessment
+------------------------
+
+add: O(1)
+value: O(1)
+memory: O(window_size)
+
+------------------------
+Engineering Level
+------------------------
+
+For a 15-minute micro-drill, this is excellent.
+You’re already writing code that reads like it belongs in a real codebase,
+just needs docstring polish.
+
+Keep this standard.
+"""
