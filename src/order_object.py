@@ -72,8 +72,7 @@ from enum import Enum
 class Side(Enum):
     BUY = 0
     SELL = 1
-   
-    
+
 
 
 class Order:
@@ -115,6 +114,7 @@ class Order:
     @property
     def order_id(self):
         return self._order_id
+        
         
         
         

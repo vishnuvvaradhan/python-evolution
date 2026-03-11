@@ -89,7 +89,7 @@ class pricelevel:
 
     def __init__(self, price: float):
         self.price :float = price
-        self.volume: int = 0
+        self.volume: float = 0
         self.queue : deque= deque()
         self.size: int = 0
 
@@ -143,7 +143,7 @@ class Orderbook:
         order = Order(order_id, self.side, price, quantity)
 
         #adds order O(logn)
-        self.orderbook.setdefault(price, pricelevel()).add_order(order)
+        self.orderbook.setdefault(price, pricelevel(price)).add_order(order)
 
     
     def cancel_order(self, order: Order) -> None:
