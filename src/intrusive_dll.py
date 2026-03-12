@@ -185,7 +185,9 @@ class OrderQueue:
             str_node = f'(order_id={o_id}, quantity={quant})'
             
             ll.append(str_node)
-            ll.append("->")
+            
+            if (cur.next):
+                ll.append("->")
             
             cur = cur.next
         
@@ -453,6 +455,8 @@ n1 = q.append("D1", 10)
 n2 = q.append("D2", 20)
 n3 = q.append("D3", 30)
 n4 = q.append("D4", 40)
+
+print(q)
 
 q.remove(n3)
 
