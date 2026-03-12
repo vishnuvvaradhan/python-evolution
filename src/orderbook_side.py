@@ -59,9 +59,11 @@ Ask -> least to greatest -> price at which someone is willing to sell
 Since this orderbook is only one sided, no need to worry about orderbooks "crossing"
 
 """
+
 from enum import Enum
 
 from sortedcontainers import sorteddict
+
 from collections import deque
 
 
@@ -114,7 +116,7 @@ class pricelevel:
         return self.size
     
 
-    def get_volume(self) -> int:
+    def get_volume(self) -> float:
         return self.volume
     
 
@@ -128,9 +130,9 @@ class Orderbook:
         self.side = side
 
         if self.side ==  Side.BID:
-            self.orderbook = sorteddict(lambda x: -x)
+            self.orderbook = sorteddict.SortedDict(lambda x: -x)
         else:
-            self.orderbook = sorteddict()
+            self.orderbook = sorteddict.SortedDict()
 
 
 
@@ -170,7 +172,7 @@ class Orderbook:
         return self.orderbook.peekitem(0)[0]
     
 
-    def total_quantity_at_price(self, price: float) -> int:
+    def total_quantity_at_price(self, price: float) -> float:
 
         price_level: pricelevel = self.orderbook.get(price, None)
 
