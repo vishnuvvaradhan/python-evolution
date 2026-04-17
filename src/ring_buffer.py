@@ -109,6 +109,7 @@ class RingBuffer:
         self.head: int = 0
         self.tail = 0
         self.size: int = 0
+
        
         
     def latest(self):
@@ -137,7 +138,7 @@ class RingBuffer:
     def push(self, market_event: MarketEvent):
         
         if(self.size == self.capacity):
-            self.head += 1 
+            self.head += 1
             #AND rax, rbx, so one cpu cycle rather than mod
             self.head = self.head & (self.capacity - 1)
         else: 
